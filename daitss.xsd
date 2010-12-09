@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<!--
+     simplified daitss schema for sip descriptors
+     -->
+
+<xsd:schema
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  targetNamespace="http://www.fcla.edu/dls/md/daitss/"
+  elementFormDefault="qualified"
+  xsi:schemaLocation="http://www.w3.org/2001/XMLSchema http://www.w3.org/2001/XMLSchema.xsd">
+
+  <xsd:element name="daitss">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="AGREEMENT_INFO">
+          <xsd:complexType>
+            <xsd:attribute name="ACCOUNT" type="xsd:string" use="required"/>
+            <xsd:attribute name="PROJECT" type="xsd:string" use="required"/>
+            <xsd:attribute name="SUB_ACCOUNT" type="xsd:string"/>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+
+</xsd:schema>
