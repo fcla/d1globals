@@ -1,0 +1,46 @@
+<html>
+<head><title>Temporarily out of service</title></head>
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="refresh" content="60;url=http://www.oclc.org/support/systemalerts/default.asp">
+<style>
+
+h1 { font-family: Verdana, Arial, sans-serif; font-size: 12pt; font-weight: bold; padding: 30px 20px 10px 24px }
+p { font-family: Verdana, Arial, sans-serif; font-size: 10pt; padding: 0px 20px 10px 24px }
+
+</style>
+</head>
+
+<body bgcolor="#666666" LEFTMARGIN="0" TOPMARGIN="0" MARGINWIDTH="0" MARGINHEIGHT="0">
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+<tr><td colspan="2" height="30" bgcolor="#666666"> </td></tr>
+
+<tr bgcolor="#ffffff">
+<td><img src="/images/brandbar1.gif"></td>
+<td width="95%" align="left"><img src="/images/brandbar2.gif"></td>
+</tr>
+
+<tr bgcolor="#ffffff">
+<td valign="bottom"><img src="/images/bkgd_paper_menu.jpg"></td>
+<td valign="top">
+
+<h1>The site you tried to access (<a href="http://www.dublincore.org/">www.dublincore.org</a>) is temporarily unavailable.<br><br>
+In 60 seconds you will be redirected to our <a href="http://www.oclc.org/support/systemalerts/default.asp">System Alerts</a> page.</h1> 
+
+<p>We apologize for the inconvenience. Please contact OCLC Support if the site has been unavailable for more than one hour.</p>
+<p>OCLC support:<br>
++1-614-793-8682<br>
+1-800-848-5800 (USA)<br>
+E-mail: support@oclc.org</p>
+<br><br><br><br><br><br><br><br><br><br><br>
+
+
+</td>
+</tr>
+
+</table>
+
+</body>
+
+</html>

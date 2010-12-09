@@ -1,0 +1,316 @@
+<!-- XML DTD FOR THE MXF -->
+<!--  SUS DIGITAL LIBRARY and PALMM -->
+<!--  -->
+<!--DTD created: 4/28/00 -->
+<!--BJ: 5/17/00-->
+<!--  revised to eliminate entity -->
+<!--PLC: 5/18/00-->
+<!--  reordered declarations (though this may not be an improvement)-->
+<!--  added ELEMENT declarations for creationMethod and scanner-->
+<!--  changed extRec subelements to required, non-repeatable-->
+<!--  changed div, file and scanningInfo to allow text as well as child
+elements-->
+<!-- PLC: 5/25/00 -->
+<!--   added attributes id and type to entityDesc -->
+<!--   changed div attribute type to required -->
+<!-- PLC: 5/30/00 -->
+<!--   added attribute creator to contrib -->
+<!--   added attribute source to entityDesc -->
+<!--   changed definition of attribute n on div -->
+<!--   added attribute n to file -->
+<!--   changed case for included Dublin Core elements -->
+<!--   eliminated ns attribute on bibDesc -->
+<!-- PLC: 9/3/00 -->
+<!--   added versionStatement to entityDesc -->
+<!--   added collection value to entityDesc type attribute -->
+<!--   added archival values to div type attribute -->
+<!-- PLC: 12/21/00 -->
+<!--   added element MXF so DTD will validate -->
+<!--   made versionStatement required, non-repeatable -->
+<!--   added element copyrightStatement -->
+<!--   extRec and bibDesc no longer mutually exclusive -->
+<!--   replaced extRec attributes type, uri, system, database, and recordkey -->
+<!--      with attributes sid and pid -->
+<!--   added attribute ns to bibDesc -->
+<!--   updated Dublin Core list to include qualified elements -->
+<!--   made attribute n of element div optional -->
+<!--   made attributes of element settings required -->
+<!-- PLC: 01/02/01 -->
+<!--   fix definition of extRec attributes sid and pid -->
+<!--   make ns attribute of element bibDesc optional -->
+<!--   fix definition of creator subelements insitution and individual -->
+<!--   change creationMethod from EMPTY to PCDATA -->
+<!--   add volume and issue as valid type attribute values for element div -->
+<!-- PLC: 01/29/01 -->
+<!--   added attribute new to package -->
+<!--   required values for bar attribute type to be color or grayscale -->
+<!--   got rid of page control characters --> 
+<!-- CTV: 02/08/01 --> 
+<!--   ATTLIST packageDesc - id changed from type 'nmtoken' to type 'id' -->
+<!--   ATTLIST entityDesc - source now includes 'FCLA' in enumeration -->
+<!--   ATTLIST div n - type changed from nmtoken to CDATA -->
+<!--   ATTLIST div id - type changed from nmtoken to ID -->
+<!--   ELEMENT bibDesc - subelement list now includes all suppported DC info -->
+<!--   ELEMENT dc.relation (#PCDATA)> - removed  -->
+<!--   ELEMENT file - bibDesc added to subelement enumeration -->
+<!--   ATTLIST file id - type changed form nmtoken to ID -->
+<!--   ELEMENT image - reordered subelements -->
+<!--   ATTLIST dimensions horizontal - type changed from nmtoken to CDATA   -->
+<!--   ATTLIST dimensions vertical - type changed from nmtoken to CDATA -->
+<!-- CTV: 02/08/01 -->
+<!--    removed <!ATTLIST div id ID #IMPLIED> from Element DIV  --> 
+<!-- PLC: 02/14/01 -->
+<!--    make SourceInfo take text as well as File elements -->
+<!--CTV: 02/20/01 -->
+<!--    ATTLIST div type - added "advertisement | contents | correspondence | editorial | index" -->
+<!-- PLC: 04/20/01 -->
+<!--    ATTLIST entityDesc type - added value vismat -->
+<!--    added elements dc.contributor.role, dc.description.note, dc.description.release, thesis.degree,
+thesis.degree.discipline, thesis.degree.grantor, thesis.degree.level -->
+<!--    ATTLIST div type - added value suppl -->
+<!--    ATTLIST file - added required attribute filesize -->
+<!--    added ELEMENT checksum as a required subelement of file -->
+<!--    added required attribute type to element checksum --> 
+<!--    added ELMENT storage as a required subelement of file -->
+<!--    added required  attributes segment and planarConfiguration to element storage -->
+<!--    changed scanningInfo to captureInfo -->
+<!--    changed scanner to device -->
+<!--    added attribute type to device with list of values -->
+<!--    changed element settings to scannerSettings and added new element cameraSettings --> 
+<!--    added element dimensionsSource with attributes -->
+<!--    changed the element dimensions attributes horizontal and vertical to x and y -->
+<!--    added element samplingFrequency with attributes -->
+<!-- CTV: 04/26/01 -->
+<!--	entityDesc type - changed vismat to map -->
+<!--	added element 'filename' to element file-->
+<!--    <!ATTLIST storage planarConfiguration: changed n/a to 'unknown' -->
+<!--    added <!ELEMENT head (#PCDATA)> and ref in div element; and adjusted repeatability -->
+<!-- 	added <!ELEMENT capture (#PCDATA)> and ref in captureInfo; and adjusted repeatability -->
+<!--    <!ELEMENT source (#PCDATA)> and ref in sourceInfo; and adjusted repeatability -->
+<!--    <!ATTLIST procInstr server (TC | IC | DL ) #IMPLIED> added to procInstr  -->
+<!--    added photo | postcard to entityDesc type -->
+<!-- CTV: 04/27/01 -->
+<!--    !ELEMENT file subelements changed from 'OR' to all; order of subelements is now important -->
+<!--    subelement storage moved from file to image as a required subelement -->
+<!--    !ELEMENT captureInfo subelements changed from 'OR' to all; order of subelements is now important -->
+<!--  	ELEMENT captureInfo subelement device moved from 4th to 2nd position in subelement list -->
+<!--    !ELEMENT sourceInfo: repeatability of subelements changed to optional repeatable for all subelements -->
+<!--	in element <entityDesc> the subelement <bibDesc> is now required. -->
+<!-- 	 -->
+<!-- CTV: 05/04/01 -->
+<!--    subelements storage,samplingFrequency of element image are now optional non-repeatable -->
+<!-- 	subelement checksum of element file is now optional non-repeatable -->
+<!-- CTV: 05/04/01 -->
+<!--    added permission to value list for div attribute 'type'-->
+<!-- CTV: 05/16/01 -->
+<!-- 	<!ELEMENT div (head?, bibDesc?, div*, file*)>; switched order of div and bibDesc -->
+<!-- CTV: 05/17/01 -->
+<!--	<!ELEMENT scannerSettings changed from PCDATA To EMPTY -->
+<!--    subelement contrib of element packageDesc is now optional, non-repeatable -->
+<!--  	removed attribute <!ATTLIST target type (color | grayscale) #REQUIRED> from element target-->
+<!-- CTV: 05/18/01 -->
+<!--    <!ATTLIST dimensions x  NMTOKEN #REQUIRED>
+	    <!ATTLIST dimensions y NMTOKEN #REQUIRED>, BOTH CHANGED FROM CDATA TO NMTOKEN
+-->
+<!--  <!ATTLIST dimensionsSource unit (inch | centimeter | none) #IMPLIED>, CHANGED FROM CDATA TO LIST -->
+<!--  <!ELEMENT file (filename, checksum?, creationDate?, creator?, creationMethod?,
+		compression?, captureInfo?, image?, sourceInfo?, bibDesc?)>, switched order of
+		subelements sourceInfo and bibDesc -->
+<!--     <!ATTLIST scannerSettings gamma  CDATA #IMPLIED>
+        <!ATTLIST scannerSettings brightness CDATA #IMPLIED>
+        <!ATTLIST scannerSettings contrast CDATA #IMPLIED>
+        <!ATTLIST scannerSettings saturation CDATA #IMPLIED>
+        <!ATTLIST scannerSettings percentage CDATA #IMPLIED>, all changed from REQUIRED to IMPLIED -->
+<!-- CTV: 06/04/01
+		<!ATTLIST samplingFrequency plane (digitalCamera | object | sourceObject) #IMPLIED>;
+		CHANGED FROM REQUIRED TO IMPLIED -->
+<!-- CTV: 08/17/01
+	formats is now required by packageDesc
+-->
+<!-- CTV: 08/17/01
+	added 'TD' to server values
+-->
+
+<!ELEMENT MXF (package)>
+<!ELEMENT package (packageDesc+,entityDesc+)>
+<!ATTLIST package new (yes | no) #REQUIRED>
+
+<!ELEMENT packageDesc (contrib?,procInstr?,formats,timestamp)>
+ 	<!ATTLIST packageDesc id ID #REQUIRED>
+
+<!ELEMENT contrib (#PCDATA)>
+	<!ATTLIST contrib creator CDATA #IMPLIED>
+
+<!ELEMENT procInstr EMPTY>
+ 	<!ATTLIST procInstr directory CDATA #IMPLIED>
+    <!ATTLIST procInstr makerules CDATA #IMPLIED>
+    <!ATTLIST procInstr derivatives CDATA #IMPLIED>
+	<!ATTLIST procInstr server (TC | IC | DL | TD) #IMPLIED> 
+		
+<!ELEMENT formats (#PCDATA)>
+
+<!ELEMENT timestamp (#PCDATA)>
+
+<!ELEMENT entityDesc (projects?, versionStatement, copyrightStatement?, extRec?, bibDesc, div*)>
+	<!ATTLIST entityDesc id CDATA #IMPLIED>
+	<!ATTLIST entityDesc type (monograph | multipart | serial | collection | map | photo | postcard) #REQUIRED>  
+	<!ATTLIST entityDesc source (FAMU | FAU | FCLA | FGCU | FIU | FSU | UCF | UF | UM | UNF | USF | UWF) #REQUIRED>
+
+<!ELEMENT projects (#PCDATA)>
+
+<!ELEMENT versionStatement (#PCDATA)>
+
+<!ELEMENT copyrightStatement (#PCDATA)>
+
+<!ELEMENT extRec EMPTY>
+	<!ATTLIST extRec pid CDATA #REQUIRED>
+	<!ATTLIST extRec sid CDATA #REQUIRED>
+
+<!ELEMENT div (head?, bibDesc?, div*, file*)>
+<!ATTLIST div type (page | issue | chapter | article | main | suppl | cover | section | fonds | recordgrp | series | subgrp | subseries | box | file | item | volume | advertisement | contents | correspondence | editorial | index | permission | abstract | part | bookplate) #REQUIRED>
+        <!ATTLIST div n CDATA #IMPLIED>
+
+<!ELEMENT head (#PCDATA)>
+
+<!ELEMENT bibDesc (dc.title | dc.title.alternative | dc.creator | dc.subject | dc.description
+| dc.publisher | dc.description.abstract | dc.description.tableOfContents |  dc.description.note
+| dc.description.release | dc.contributor | dc.contributor.role 
+| dc.publisher | dc.date | dc.type | dc.format.extent | dc.format.medium  | dc.identifier 
+|  dc.source | dc.language | dc.relation.isPartOf | dc.relation.hasPart | dc.relation.isVersionOf
+| dc.relation.hasVersion | dc.relation.isFormatOf | dc.relation.hasFormat
+| dc.coverage | dc.rights | dc.date.created | dc.date.issued | dc.date | dc.date.modified
+| thesis.degree | thesis.degree.level | thesis.degree.discipline | thesis.degree.grantor | uf.pages)*>
+<!ATTLIST bibDesc ns CDATA #IMPLIED>
+
+<!ELEMENT dc.title (#PCDATA)>
+<!ELEMENT dc.title.alternative (#PCDATA)>
+
+<!ELEMENT dc.creator (#PCDATA)>
+
+<!ELEMENT dc.subject (#PCDATA)>
+<!ELEMENT dc.description (#PCDATA)>
+<!ELEMENT dc.description.abstract (#PCDATA)>
+<!ELEMENT dc.description.note (#PCDATA)>
+<!ELEMENT dc.description.release (#PCDATA)>
+<!ELEMENT dc.description.tableOfContents (#PCDATA)>
+<!ELEMENT dc.publisher (#PCDATA)>
+<!ELEMENT dc.contributor (#PCDATA)>
+<!ELEMENT dc.contributor.role (#PCDATA)>
+<!ELEMENT dc.date (#PCDATA)>
+<!ELEMENT dc.date.created (#PCDATA)>
+<!ELEMENT dc.date.issued (#PCDATA)>
+<!ELEMENT dc.date.modified (#PCDATA)>
+<!ELEMENT dc.type (#PCDATA)>
+<!ELEMENT dc.format.extent (#PCDATA)>
+<!ELEMENT dc.format.medium (#PCDATA)>
+<!ELEMENT dc.identifier (#PCDATA)>
+<!ELEMENT dc.source (#PCDATA)>
+<!ELEMENT dc.language (#PCDATA)>
+<!ELEMENT dc.relation.isPartOf (#PCDATA)>
+<!ELEMENT dc.relation.hasPart (#PCDATA)>
+<!ELEMENT dc.relation.isVersionOf (#PCDATA)>
+<!ELEMENT dc.relation.hasVersion (#PCDATA)>
+<!ELEMENT dc.relation.isFormatOf (#PCDATA)>
+<!ELEMENT dc.relation.hasFormat (#PCDATA)>
+<!ELEMENT dc.coverage (#PCDATA)>
+<!ELEMENT dc.rights (#PCDATA)>
+
+<!ELEMENT thesis.degree (#PCDATA)>
+<!ELEMENT thesis.degree.level (#PCDATA)>
+<!ELEMENT thesis.degree.grantor (#PCDATA)>
+<!ELEMENT thesis.degree.discipline (#PCDATA)>
+<!ELEMENT uf.pages (#PCDATA)>
+
+<!ELEMENT file (filename, checksum?, creationDate?, creator?, creationMethod?,
+compression?, captureInfo?, image?, sourceInfo?, bibDesc?)>
+        <!ATTLIST file id ID #IMPLIED>
+        <!ATTLIST file format CDATA #REQUIRED>
+        <!ATTLIST file n NMTOKEN #IMPLIED>
+        <!ATTLIST file filesize NMTOKEN #REQUIRED>
+
+<!ELEMENT filename (#PCDATA)>
+<!ELEMENT checksum (#PCDATA)>
+        <!ATTLIST checksum type CDATA #REQUIRED>
+
+<!ELEMENT creationDate (#PCDATA)>
+
+<!ELEMENT creator (institution?,individual?)>
+<!ELEMENT institution (#PCDATA)>
+<!ELEMENT individual (#PCDATA)>
+
+<!ELEMENT creationMethod (#PCDATA)>
+        <!ATTLIST creationMethod software CDATA #IMPLIED>
+        <!ATTLIST creationMethod version CDATA #IMPLIED>
+
+<!ELEMENT storage EMPTY>
+         <!ATTLIST storage segment (strip | tile) #REQUIRED>
+         <!ATTLIST storage planarConfiguration (chunky | planar | unknown)  #REQUIRED>
+
+<!ELEMENT captureInfo (capture?, device?, scannerSettings?, cameraSettings?, light?,
+trackingID?)>
+
+<!ELEMENT capture (#PCDATA)>
+
+<!ELEMENT scannerSettings EMPTY>
+        <!ATTLIST scannerSettings gamma  CDATA #IMPLIED>
+        <!ATTLIST scannerSettings brightness CDATA #IMPLIED>
+        <!ATTLIST scannerSettings contrast CDATA #IMPLIED>
+        <!ATTLIST scannerSettings saturation CDATA #IMPLIED>
+        <!ATTLIST scannerSettings percentage CDATA #IMPLIED>
+
+<!ELEMENT cameraSettings (#PCDATA)>
+
+<!ELEMENT device (#PCDATA)>
+         <!ATTLIST device type (transmissiveScanner | reflectiveScanner | digitalStillCamera | 
+videoCameraStill) #IMPLIED>
+
+<!ELEMENT light (#PCDATA)>
+
+<!ELEMENT trackingID (#PCDATA)>
+
+<!ELEMENT sourceInfo (source | file | dimensionsSource)*> 
+        <!ATTLIST sourceInfo ref CDATA #IMPLIED>
+
+<!ELEMENT source (#PCDATA)>
+
+<!ELEMENT dimensionsSource EMPTY>
+         <!ATTLIST dimensionsSource x NMTOKEN #IMPLIED>
+         <!ATTLIST dimensionsSource y NMTOKEN #IMPLIED>
+         <!ATTLIST dimensionsSource unit (inch | centimeter | none) #IMPLIED>
+
+<!ELEMENT compression (#PCDATA)>
+        <!ATTLIST compression name CDATA #IMPLIED>
+
+<!ELEMENT image 
+(bitDepth?,resolution?,storage?,samplingFrequency?,colorSpace?,dimensions?,colorManagement?,clut?,target*,
+descreening?,orientation?)>
+
+<!ELEMENT samplingFrequency EMPTY>
+         <!ATTLIST samplingFrequency unit (inch | centimeter | none) #REQUIRED>
+         <!ATTLIST samplingFrequency x NMTOKEN #IMPLIED>
+         <!ATTLIST samplingFrequency y NMTOKEN #IMPLIED>
+         <!ATTLIST samplingFrequency plane (digitalCamera | object | sourceObject) #IMPLIED>
+
+<!ELEMENT dimensions EMPTY>
+        <!ATTLIST dimensions x  NMTOKEN #REQUIRED>
+        <!ATTLIST dimensions y NMTOKEN #REQUIRED>
+
+<!ELEMENT bitDepth (#PCDATA)>
+<!ELEMENT resolution (#PCDATA)>
+<!ELEMENT colorSpace (#PCDATA)>
+<!ELEMENT colorManagement (#PCDATA)>
+<!ELEMENT clut (#PCDATA)>
+
+<!ELEMENT target (#PCDATA)>
+
+<!ELEMENT descreening (#PCDATA)>
+        <!ATTLIST descreening software CDATA #IMPLIED>
+        <!ATTLIST descreening settings CDATA  #IMPLIED>
+    <!--settings here, too?-->
+
+<!ELEMENT orientation (#PCDATA)>
+
+<!--?=optional, non-repeatable -->
+<!--*=optional, repeatable-->
+<!--+=required, repeatable-->
+
